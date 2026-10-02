@@ -1,7 +1,7 @@
 name: TEST identity bot PR fixture
 on:
   pull_request_target:
-    branches: [identity-qualification-20261002]
+    branches: [main]
     types: [labeled]
 permissions:
   contents: read
@@ -16,8 +16,8 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const pr = context.payload.pull_request;
-            if (pr.base.ref !== 'identity-qualification-20261002' || pr.head.repo.full_name !== context.repo.owner + '/' + context.repo.repo) throw new Error('TEST scope mismatch');
-            const head = 'identity-qualification-bot-pr-20261002';
+            if (pr.base.ref !== 'main' || pr.head.repo.full_name !== context.repo.owner + '/' + context.repo.repo) throw new Error('TEST scope mismatch');
+            const head = 'identity-final-bot-pr-20261002';
             const ref = await github.rest.git.getRef({ owner, repo, ref: 'heads/' + head });
             if (ref.data.object.sha !== pr.head.sha) throw new Error('TEST bot fixture must use the owner PR exact head');
             const existing = await github.rest.pulls.list({ owner, repo, state: 'open', head: owner + ':' + head, base: pr.base.ref });
