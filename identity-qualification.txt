@@ -1,0 +1,1 @@
+Disposable owner-authored TEST commit for commit-author-identity gate.
