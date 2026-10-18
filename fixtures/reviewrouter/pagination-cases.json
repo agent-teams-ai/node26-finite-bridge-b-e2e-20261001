@@ -1,0 +1,6 @@
+{
+  "page": 1,
+  "size": 2,
+  "items": ["A", "B", "C", "D"],
+  "expected": ["A", "B"]
+}

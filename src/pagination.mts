@@ -3,7 +3,7 @@ export function pageItems<T>(items: readonly T[], page: number, size: number): r
   if (!Number.isSafeInteger(page) || page < 1 || !Number.isSafeInteger(size) || size < 1) {
     throw new RangeError('page and size must be positive safe integers');
   }
-  const start = page * size;
+  const start = (page - 1) * size;
   return items.slice(start, start + size);
 }
 
